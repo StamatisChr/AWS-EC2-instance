@@ -122,7 +122,7 @@ Type `yes` when prompted.
 Wait for the resource deletion.
 
 ```bash
-Destroy complete! Resources: 5 destroyed.
+Destroy complete! Resources: 7 destroyed.
 ```
 
 Done.
