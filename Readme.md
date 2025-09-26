@@ -23,9 +23,6 @@ More details [here](https://registry.terraform.io/providers/hashicorp/aws/latest
 
 ```bash
 export AWS_ACCESS_KEY_ID=<your_access_key_id>
-```
-
-```bash
 export AWS_SECRET_ACCESS_KEY=<your_secret_key>
 ```
 
@@ -52,11 +49,11 @@ The variables have default values, you do not have to change them if you don't n
 
 | Variable  | Default value | Notes |
 | -------- | ------- | ------ |
-| `"aws_region"`  | `"eu-west-1"`    |   change it to the region of your preference     |
-| `"use_user_data"` | `true`    |   Docker will be installed, set it to `false` if you don't need docker    |
-| `"tfe_instance_type"` |  `"t3.small"`   |   change it to the instance type of your preference   |
-|`"root_block_device_disk_size"`| 30| the disk size of the EC2 instance in GB |
-|`"ingress_ports"`|`[]`|a list of allowed incoming traffic ports. You can add more than one ports by seperating them with a comma, for example, if you want to add port 80 and 443, the value should look like this: `[80, 443]`. The default is no ports allowed|
+| `aws_region`  | `eu-west-1`    |   change it to the region of your preference     |
+| `use_user_data` | `true`    |   Docker will be installed, set it to `false` if you don't need docker    |
+| `tfe_instance_type` |  `t3.small`   |   change it to the instance type of your preference   |
+|`root_block_device_disk_size`| `30`| the disk size of the EC2 instance in GB |
+|`ingress_ports`|`[]`|a list of allowed incoming traffic ports. You can add more than one ports by seperating them with a comma, for example, if you want to add port 80 and 443, the value should look like this: `[80, 443]`. The default is no ports allowed|
 
 Save your changes.
 
