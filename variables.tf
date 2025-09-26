@@ -25,5 +25,5 @@ variable "root_block_device_disk_size" {
 variable "ingress_ports" {
   description = "The list of ingress ports to allow in the security group"
   type        = list(number)
-  default     = [22]
+  default     = []
 }

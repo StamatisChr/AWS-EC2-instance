@@ -49,11 +49,14 @@ There are 4 properties that you can change here, AWS region, EC2 instance disk s
 
 The variables have default values, you do not have to change them if you don't need to.By default user_data will pass to the EC2 instance and docker will be installed.
 
-- variable `"aws_region"` the default value is `"eu-west-1"`, change it to the region of your preference
-- variable `"use_user_data"` the default value is `true` and docker will be installed, set it to `false` if you don't need docker
-- variable `"tfe_instance_type"` the default value is `"t3.small"`
-- variable `"root_block_device_disk_size"`, the disk size of the EC2 instance in GB, the default value is 30.
-- variable `"ingress_ports"` a list of allowed incoming traffic ports. By default port 22 is allowed, if you remove it you will not be able to connect to the EC2 instance. You can add more ports seperating them with a comma, for example, if you want to add port 80 and 443, the value should look like this: `[22, 80, 443]`  
+
+| Variable  | Default value | Notes |
+| -------- | ------- | ------ |
+| `"aws_region"`  | `"eu-west-1"`    |   change it to the region of your preference     |
+| `"use_user_data"` | `true`    |   Docker will be installed, set it to `false` if you don't need docker    |
+| `"tfe_instance_type"` |  `"t3.small"`   |   change it to the instance type of your preference   |
+|`"root_block_device_disk_size"`| 30| the disk size of the EC2 instance in GB |
+|`"ingress_ports"`|`[]`|a list of allowed incoming traffic ports. You can add more than one ports by seperating them with a comma, for example, if you want to add port 80 and 443, the value should look like this: `[80, 443]`. The default is no ports allowed|
 
 Save your changes.
 
@@ -83,17 +86,28 @@ Do you want to perform these actions?
 When apply is finished, you will have an output like this:
 ```bash
 ...
-...
-...
-Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-connect_with_ec2_instance_connect = "https://eu-west-1.console.aws.amazon.com/ec2-instance-connect/ssh/home?addressFamily=ipv4&connType=standard&instanceId=i-0952cdd305c45cd83&osUser=ubuntu&region=eu-west-1&sshPort=22"
+ec2_instance_details = {
+  "instance_id" = "i-00b197d00f9216ede"
+  "instance_type" = "t3.small"
+  "private_dns" = "ip-172-31-11-193.eu-west-1.compute.internal"
+  "private_ip" = "172.31.11.193"
+  "public_dns" = "ec2-3-255-214-129.eu-west-1.compute.amazonaws.com"
+  "public_ip" = "3.255.214.129"
+}
+start_aws_ssm_session = "aws ssm start-session --target i-00b197d00f9216ede --region eu-west-1"
 
 ```
 
-If you open the `connect_with_ec2_instance_connect` URL you will be redirected on the AWS EC2 console with an ssh session open to the EC2 instance via the EC2 Instance Connect (requires ssh port 22 to be allowed)
+Run the AWS cli command from the `start_aws_ssm_session` output, to connect to the EC2 instance.
+
+Example:
+```bash
+aws ssm start-session --target i-00b197d00f9216ede --region eu-west-1
+```
 
 You are now connected to the EC2 instance.
 

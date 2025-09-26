@@ -19,3 +19,6 @@ data "aws_ami" "ubuntu_2404" {
   }
 }
 
+data "aws_iam_policy" "SecurityComputeAccess" {
+  name = "SecurityComputeAccess"
+}
