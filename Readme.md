@@ -33,13 +33,13 @@ export AWS_SECRET_ACCESS_KEY=<your_secret_key>
 
 Open your terminal and run:
 ```bash
-git clone git@github.com:StamatisChr/TF-AWS-EC2-instance.git
+git clone git@github.com:StamatisChr/AWS-EC2-instance.git
 ```
 
 When the repository cloning is finished, change directory to the repo’s terraform directory:
 
 ```bash
-cd TF-AWS-EC2-instance
+cd AWS-EC2-instance
 ```
 
 ## Edit EC2 instance properties
